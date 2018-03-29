@@ -15,6 +15,11 @@ client.on("ready", function() {
     client.user.setGame(`http://gamers-israel.co.il`, "https://twitch.tv/bluemalgeran");
 });
 
+client.on('guildMemberAdd', member => {
+    let welcomeRole = member.guild.roles.find("name", "ממתין לאישור משתמש");
+    member.addRole(welcomeRole);
+});
+
 // Message functions with the bot
 client.on("message", function(message) {
     // Ignores the bot if he some how tries to use a command
