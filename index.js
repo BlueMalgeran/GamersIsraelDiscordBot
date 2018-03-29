@@ -37,13 +37,14 @@ client.on("message", function(message) {
             let logChannel = message.guild.channels.find("name", "bot-join-log");
 
             if (message.member.roles.find("name", "Gamers-IL | Verified")) {
-                return message.reply("וולאק יש לך את הרול הזה מה אתה חופר");
+                message.reply("וולאק יש לך את הרול הזה מה אתה חופר");
             } else {
                 console.log(`${message.author.tag} has been accepted!`);
                 logChannel.send(`${message.author.tag} has been accepted!`);
             }
             message.member.addRole(acceptRole);
             message.member.removeRole(removeRole);
+            message.delete();
         break;
     }
 });
