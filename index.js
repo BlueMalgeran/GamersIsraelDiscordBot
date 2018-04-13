@@ -10,17 +10,41 @@ var client = new Discord.Client();
 
 // When the bot comes online this is the functions
 client.on("ready", function() {
-    console.log('I\'m online!');
+    var clientonmessage = `
+------------------------------------------------------
+> Logging in...
+------------------------------------------------------
+Logged in as ${client.user.tag}
+Working on ${client.guilds.size} servers!
+${client.channels.size} channels and ${client.users.size} users cached!
+I am logged in and ready to roll!
+LET'S GO!
+------------------------------------------------------
+----------Bot created by Blue Malgeran#3106-----------
+------------------------------------------------------
+-----------------Bot's commands logs------------------`
 
-    client.user.setGame(`http://gamers-israel.co.il`, "https://twitch.tv/bluemalgeran");
+    console.log(clientonmessage);
+
+    client.user.setGame(`!accept | http://gamers-israel.co.il`, "https://twitch.tv/bluemalgeran");
 });
 
 // Member joins event! The bot will give him a role and will tell him to type !accept
 client.on('guildMemberAdd', member => {
     let welcomeRole = member.guild.roles.find("name", "ממתין לאישור משתמש");
     let welcomeChannel = member.guild.channels.get('428567286559801345');
+    var welcomeMSG = ` 
+    \`\`\`ini
+[Welcome message]
+# Welcome to CS:GO Staff's official Discord server!
+    
+[Information]
+# If you want to see the text and voice channels, please type !accept
+    
+[Help]
+# If you need help with something please contact Blue Malgeran#3106 (The developer of this bot :3)\`\`\``
     member.addRole(welcomeRole);
-    welcomeChannel.send('test');
+    welcomeChannel.send(welcomeMSG);
 });
 
 // Message functions with the bot
